@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace news_feed.Model
+namespace news_feed.Models
 {
     public class NewsFeed
     {
@@ -8,6 +8,6 @@ namespace news_feed.Model
 
         public string Name { get; set; }
 
-        public List<News> News { get; set; }
+        public ICollection<News> News { get; set; }
     }
 }

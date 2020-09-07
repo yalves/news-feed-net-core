@@ -219,7 +219,7 @@ namespace news_feed.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("news_feed.Model.News", b =>
+            modelBuilder.Entity("news_feed.Models.News", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -245,7 +245,7 @@ namespace news_feed.Data.Migrations
                     b.ToTable("News");
                 });
 
-            modelBuilder.Entity("news_feed.Model.NewsFeed", b =>
+            modelBuilder.Entity("news_feed.Models.NewsFeed", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -311,9 +311,9 @@ namespace news_feed.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("news_feed.Model.News", b =>
+            modelBuilder.Entity("news_feed.Models.News", b =>
                 {
-                    b.HasOne("news_feed.Model.NewsFeed", null)
+                    b.HasOne("news_feed.Models.NewsFeed", null)
                         .WithMany("News")
                         .HasForeignKey("NewsFeedId");
                 });

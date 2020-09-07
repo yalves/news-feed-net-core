@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using news_feed.Models;
+using news_feed.ViewModels;
 
 namespace news_feed.Controllers
 {

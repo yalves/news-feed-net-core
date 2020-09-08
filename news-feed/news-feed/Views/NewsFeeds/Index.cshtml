@@ -10,33 +10,45 @@
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            @foreach (var news in item.News)
-            {
-                <p>@news.Title</p>
-                <p>@news.Content</p>
-                <p>@news.Timestamp</p>
-                <p>@news.NewsFeed.Name</p>
-            }
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @foreach (var news in item.News)
+                {
+                    <p>@news.Title</p>
+                    <p>@news.Content</p>
+                    <p>@news.Timestamp</p>
+                    <p>@news.NewsFeed.Name</p>
+                }
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+
+@*@foreach (var item in Model)
+{
+    <div class="card">
+        <p>
+            @item.Name
+        </p>
+        <h2>
+            How I recreated a Polaroid camera with CSS gradients only
+        </h2>
+    </div>
+}*@

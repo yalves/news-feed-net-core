@@ -1,0 +1,14 @@
+﻿@model news_feed.Models.News
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div>
+    <h2>@Model.Title</h2>
+    <p>@Model.Content</p>
+    <br />
+    <p>@Model.Timestamp.ToString("MM/dd/yyyy")</p>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

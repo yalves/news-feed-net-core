@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using news_feed.Models;
+using news_feed.Domain;
 
-namespace news_feed.Data
+namespace news_feed.Repositories.EntityFramework
 {
     public class ApplicationDbContext : IdentityDbContext
     {

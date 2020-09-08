@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace news_feed.Models
+namespace news_feed.Domain
 {
     public class News
     {

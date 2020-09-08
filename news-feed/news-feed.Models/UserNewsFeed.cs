@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace news_feed.Models
+namespace news_feed.Domain
 {
     public class UserNewsFeed
     {

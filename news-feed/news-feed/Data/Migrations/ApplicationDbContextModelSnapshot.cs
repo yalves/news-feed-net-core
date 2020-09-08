@@ -225,7 +225,7 @@ namespace news_feed.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("news_feed.Models.News", b =>
+            modelBuilder.Entity("news_feed.Domain.News", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -277,7 +277,7 @@ namespace news_feed.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("news_feed.Models.NewsFeed", b =>
+            modelBuilder.Entity("news_feed.Domain.NewsFeed", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -309,7 +309,7 @@ namespace news_feed.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("news_feed.Models.UserNewsFeed", b =>
+            modelBuilder.Entity("news_feed.Domain.UserNewsFeed", b =>
                 {
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -324,7 +324,7 @@ namespace news_feed.Data.Migrations
                     b.ToTable("UserNewsFeed");
                 });
 
-            modelBuilder.Entity("news_feed.Models.ApplicationUser", b =>
+            modelBuilder.Entity("news_feed.Domain.ApplicationUser", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -382,22 +382,22 @@ namespace news_feed.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("news_feed.Models.News", b =>
+            modelBuilder.Entity("news_feed.Domain.News", b =>
                 {
-                    b.HasOne("news_feed.Models.NewsFeed", "NewsFeed")
+                    b.HasOne("news_feed.Domain.NewsFeed", "NewsFeed")
                         .WithMany("News")
                         .HasForeignKey("NewsFeedId");
                 });
 
-            modelBuilder.Entity("news_feed.Models.UserNewsFeed", b =>
+            modelBuilder.Entity("news_feed.Domain.UserNewsFeed", b =>
                 {
-                    b.HasOne("news_feed.Models.NewsFeed", "NewsFeed")
+                    b.HasOne("news_feed.Domain.NewsFeed", "NewsFeed")
                         .WithMany()
                         .HasForeignKey("NewsFeedId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("news_feed.Models.ApplicationUser", "User")
+                    b.HasOne("news_feed.Domain.ApplicationUser", "User")
                         .WithMany("SubscribedFeeds")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

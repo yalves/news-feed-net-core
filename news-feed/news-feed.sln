@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "news-feed", "news-feed\news-feed.csproj", "{D4913BA3-87E9-4DC8-A574-2F314279819F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "news-feed.Models", "news-feed.Models\news-feed.Models.csproj", "{CDCCF3AA-F930-476F-9A54-A02F46A055D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "news-feed.Domain", "news-feed.Models\news-feed.Domain.csproj", "{CDCCF3AA-F930-476F-9A54-A02F46A055D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "news-feed.Services", "news-feed.Services\news-feed.Services.csproj", "{A201E058-2B7D-429F-91C3-B33DD07FDB4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "news-feed.Repositories", "news-feed.Repositories\news-feed.Repositories.csproj", "{0205DFF1-1D6E-4FD7-80D2-13005535C297}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{CDCCF3AA-F930-476F-9A54-A02F46A055D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDCCF3AA-F930-476F-9A54-A02F46A055D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDCCF3AA-F930-476F-9A54-A02F46A055D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A201E058-2B7D-429F-91C3-B33DD07FDB4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A201E058-2B7D-429F-91C3-B33DD07FDB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A201E058-2B7D-429F-91C3-B33DD07FDB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A201E058-2B7D-429F-91C3-B33DD07FDB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0205DFF1-1D6E-4FD7-80D2-13005535C297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0205DFF1-1D6E-4FD7-80D2-13005535C297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0205DFF1-1D6E-4FD7-80D2-13005535C297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0205DFF1-1D6E-4FD7-80D2-13005535C297}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,28 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using news_feed.Data;
-using news_feed.Models;
+using news_feed.Domain;
+using news_feed.ViewModels;
 
 namespace news_feed.Controllers
 {
     public class NewsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public NewsController(ApplicationDbContext context)
+
+        public NewsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: News
         public async Task<IActionResult> Index()
         {
-            return View(await _context.News.Include(x => x.NewsFeed).ToListAsync());
+            ApplicationUser applicationUser = await _userManager.GetUserAsync(User);
+
+            var viewModel = new NewsViewModel
+            {
+                News = await _context.News.Include(x => x.NewsFeed).ToListAsync(),
+                User = await _userManager.GetUserAsync(User)
+            };
+
+            return View(viewModel);
         }
 
         // GET: News/Details/5

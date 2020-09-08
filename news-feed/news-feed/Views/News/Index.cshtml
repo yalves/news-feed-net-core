@@ -1,4 +1,4 @@
-﻿@model IEnumerable<news_feed.Models.News>
+﻿@model NewsViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -8,7 +8,7 @@
 
 <select name="feeds" id="feeds" onchange="toggleFeedSelection()" class="custom-select select">
     <option value=0>All feeds</option>
-    @foreach (var item in Model.Select(x => x.NewsFeed).Distinct())
+    @foreach (var item in Model.News.Select(x => x.NewsFeed).Distinct())
     {
         <option value=@item.Id>@item.Name</option>
     }
@@ -16,7 +16,7 @@
 
 <button class="button">Subsbcribe</button>
 
-@foreach (var item in Model)
+@foreach (var item in Model.News)
 {
     <div class="card feed-@item.NewsFeed.Id" id="news-@item.Id" asp-action="Details" asp-route-id="@item.Id">
         <p>

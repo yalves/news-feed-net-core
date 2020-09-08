@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>news_feed.Services</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\news-feed.Models\news-feed.Domain.csproj" />
+    <ProjectReference Include="..\news-feed.Repositories\news-feed.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

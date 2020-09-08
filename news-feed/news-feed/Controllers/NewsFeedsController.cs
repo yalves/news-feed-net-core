@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using news_feed.Data;
-using news_feed.Models;
+using news_feed.Domain;
 
 namespace news_feed.Controllers
 {

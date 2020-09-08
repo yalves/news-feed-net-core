@@ -30,10 +30,50 @@ namespace news_feed.Data
                 .HasOne(x => x.NewsFeed)
                 .WithMany()
                 .HasForeignKey(x => x.NewsFeedId);
+
+            modelBuilder.Entity<NewsFeed>()
+                .HasMany(x => x.News)
+                .WithOne(x => x.NewsFeed);
+
+            AddSeedData(modelBuilder);
+        }
+
+        private void AddSeedData(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 1, Name = "Sports" });
+            modelBuilder.Entity<News>().HasData(new 
+            { 
+                Id = 1, 
+                Title = "Soccer", 
+                Content = "Soccer is a pretty good game to play with your family",
+                Timestamp = DateTime.Now.AddDays(-1),
+                NewsFeedId = 1,
+            });
+
+
+            modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 2, Name = "Politics" });
+            modelBuilder.Entity<News>().HasData(new
+            {
+                Id = 2,
+                Title = "Brazilian politics",
+                Content = "Will the covid-19 pandemic be erased?",
+                Timestamp = DateTime.Now.AddDays(-3),
+                NewsFeedId = 2
+            });
+
+            modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 3, Name = "TV" });
+            modelBuilder.Entity<News>().HasData(new
+            {
+                Id = 3,
+                Title = "The Office",
+                Content = "Once you get used to the cringe is a pretty good show",
+                Timestamp = DateTime.Now.AddDays(-2),
+                NewsFeedId = 3
+            });
         }
 
         public DbSet<NewsFeed> NewsFeed { get; set; }
         public DbSet<News> News { get; set; }
-        //public DbSet<UserNewsFeed> UserNewsFeed { get; set; }
+        public DbSet<UserNewsFeed> UserNewsFeed { get; set; }
     }
 }

@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
-using System.Text;
 
 namespace news_feed.Models
 {
-    public class User : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         public ICollection<UserNewsFeed> SubscribedFeeds { get; set; }
     }

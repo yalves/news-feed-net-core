@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using news_feed.Data;
 
 namespace news_feed.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200907223437_AddUserNewsFeed")]
+    partial class AddUserNewsFeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -249,32 +251,6 @@ namespace news_feed.Data.Migrations
                     b.HasIndex("NewsFeedId");
 
                     b.ToTable("News");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Content = "Soccer is a pretty good game to play with your family",
-                            NewsFeedId = 1,
-                            Timestamp = new DateTime(2020, 9, 6, 21, 25, 5, 869, DateTimeKind.Local).AddTicks(2721),
-                            Title = "Soccer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Content = "Will the coviid-19 pandemic be erased?",
-                            NewsFeedId = 2,
-                            Timestamp = new DateTime(2020, 9, 4, 21, 25, 5, 870, DateTimeKind.Local).AddTicks(683),
-                            Title = "Brazilian politics"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Content = "Once you get used to the cringe is a pretty good show",
-                            NewsFeedId = 3,
-                            Timestamp = new DateTime(2020, 9, 5, 21, 25, 5, 870, DateTimeKind.Local).AddTicks(738),
-                            Title = "The Office"
-                        });
                 });
 
             modelBuilder.Entity("news_feed.Models.NewsFeed", b =>
@@ -290,23 +266,6 @@ namespace news_feed.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("NewsFeed");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Sports"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Politics"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "TV"
-                        });
                 });
 
             modelBuilder.Entity("news_feed.Models.UserNewsFeed", b =>
@@ -384,7 +343,7 @@ namespace news_feed.Data.Migrations
 
             modelBuilder.Entity("news_feed.Models.News", b =>
                 {
-                    b.HasOne("news_feed.Models.NewsFeed", "NewsFeed")
+                    b.HasOne("news_feed.Models.NewsFeed", null)
                         .WithMany("News")
                         .HasForeignKey("NewsFeedId");
                 });

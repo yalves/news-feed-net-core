@@ -11,7 +11,6 @@ using news_feed.Models;
 
 namespace news_feed.Controllers
 {
-    [Authorize]
     public class NewsFeedsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,7 +23,7 @@ namespace news_feed.Controllers
         // GET: NewsFeeds
         public async Task<IActionResult> Index()
         {
-            return View(await _context.NewsFeed.ToListAsync());
+            return View(await _context.NewsFeed.Include(x => x.News).ToListAsync().ConfigureAwait(false));
         }
 
         // GET: NewsFeeds/Details/5

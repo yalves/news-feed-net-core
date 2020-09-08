@@ -13,6 +13,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using news_feed.Domain;
+using news_feed.Repositories.EntityFramework;
+using news_feed.Services;
+using news_feed.Repositories.News;
+using news_feed.Repositories;
 
 namespace news_feed
 {
@@ -37,6 +41,11 @@ namespace news_feed
             services.AddRazorPages();
 
             services.AddScoped<UserManager<ApplicationUser>>();
+
+            services.AddScoped<INewsService, NewsService>();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<INewsRepository, NewsRepository>();
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

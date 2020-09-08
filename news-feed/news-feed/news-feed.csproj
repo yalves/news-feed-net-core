@@ -27,6 +27,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\news-feed.Models\news-feed.Domain.csproj" />
+    <ProjectReference Include="..\news-feed.Repositories\news-feed.Repositories.csproj" />
+    <ProjectReference Include="..\news-feed.Services\news-feed.Services.csproj" />
   </ItemGroup>
 
 </Project>

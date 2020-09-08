@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using news_feed.Data;
+using news_feed.Repositories.EntityFramework;
 
 namespace news_feed.Data.Migrations
 {

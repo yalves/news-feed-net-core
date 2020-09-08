@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using news_feed.Domain;
@@ -41,7 +39,7 @@ namespace news_feed.Repositories.EntityFramework
         private void AddSeedData(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 1, Name = "Sports" });
-            modelBuilder.Entity<News>().HasData(new 
+            modelBuilder.Entity<Domain.News>().HasData(new 
             { 
                 Id = 1, 
                 Title = "Soccer", 
@@ -52,7 +50,7 @@ namespace news_feed.Repositories.EntityFramework
 
 
             modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 2, Name = "Politics" });
-            modelBuilder.Entity<News>().HasData(new
+            modelBuilder.Entity<Domain.News>().HasData(new
             {
                 Id = 2,
                 Title = "Brazilian politics",
@@ -62,7 +60,7 @@ namespace news_feed.Repositories.EntityFramework
             });
 
             modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 3, Name = "TV" });
-            modelBuilder.Entity<News>().HasData(new
+            modelBuilder.Entity<Domain.News>().HasData(new
             {
                 Id = 3,
                 Title = "The Office",
@@ -73,7 +71,7 @@ namespace news_feed.Repositories.EntityFramework
         }
 
         public DbSet<NewsFeed> NewsFeed { get; set; }
-        public DbSet<News> News { get; set; }
+        public DbSet<Domain.News> News { get; set; }
         public DbSet<UserNewsFeed> UserNewsFeed { get; set; }
     }
 }

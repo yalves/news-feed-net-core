@@ -204,6 +204,6 @@ body {
     width: 20%
 }
 
-.unsubscribe-button {
+.unsubscribe-button, .subscribe-button {
     display: none;
 }

@@ -32,6 +32,11 @@
 }
 @section scripts {
     <script type="text/javascript">
+        var subscribedFeedIds = @Html.Raw(Json.Serialize(Model.User.SubscribedFeeds.Select(x => x.NewsFeedId).ToList()));
+
+        var unsubscribeButton = document.getElementsByClassName("unsubscribe-button");
+        var subscribeButton = document.getElementsByClassName("subscribe-button");
+
         function toggleFeedSelection() {
             var select = document.getElementById("feeds")
             var allCards = document.getElementsByClassName("card");
@@ -39,10 +44,19 @@
 
             if (select.value === "0") {
                 changeDisplayOfElements(allCards, 'block');
+                changeDisplayOfElements(subscribeButton, 'none');
+                changeDisplayOfElements(unsubscribeButton, 'none');
             }
             else {
                 changeDisplayOfElements(allCards, 'none');
                 changeDisplayOfElements(selectedCards, 'block');
+                if (subscribedFeedIds.includes(Number(select.value))) {
+                    changeDisplayOfElements(unsubscribeButton, 'inline-block');
+                    changeDisplayOfElements(subscribeButton, 'none');
+                } else {
+                    changeDisplayOfElements(subscribeButton, 'inline-block');
+                    changeDisplayOfElements(unsubscribeButton, 'none');
+                }
             }
         }
 
@@ -54,18 +68,19 @@
 
         function subscribeToFeed() {
             sendSubscriptionRequest('POST');
-            var unsubscribeButton = document.getElementsByClassName("unsubscribe-button");
-            var subscribeButton = document.getElementsByClassName("subscribe-button");
             changeDisplayOfElements(unsubscribeButton, 'inline-block');
             changeDisplayOfElements(subscribeButton, 'none');
+            subscribedFeedIds.push(Number(document.getElementById("feeds").value))
         }
 
         function unSubscribeToFeed() {
             sendSubscriptionRequest('DELETE');
-            var subscribeButton = document.getElementsByClassName("subscribe-button");
-            var unsubscribeButton = document.getElementsByClassName("unsubscribe-button");
             changeDisplayOfElements(subscribeButton, 'inline-block');
             changeDisplayOfElements(unsubscribeButton, 'none');
+            var itemIndex = subscribedFeedIds.indexOf(Number(document.getElementById("feeds").value));
+            if (itemIndex > -1) {
+                subscribedFeedIds.splice(itemIndex, 1)
+            }
         }
 
         function sendSubscriptionRequest(method) {

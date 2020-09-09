@@ -10,6 +10,9 @@
 }
 else
 {
+    <h3>
+        You are seeing news from the feeds: @string.Join(", ", Model.News.Select(x => x.NewsFeed).Distinct().Select(x => x.Name))
+    </h3>
     @foreach (var item in Model.News)
     {
         <div class="card feed-@item.NewsFeed.Id" id="news-@item.Id" asp-action="Details" asp-route-id="@item.Id">

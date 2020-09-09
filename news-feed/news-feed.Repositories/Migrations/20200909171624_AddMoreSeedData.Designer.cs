@@ -3,20 +3,21 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using news_feed.Data;
 using news_feed.Repositories.EntityFramework;
 
 namespace news_feed.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200909171624_AddMoreSeedData")]
+    partial class AddMoreSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -255,26 +256,66 @@ namespace news_feed.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Content = "Soccer is a pretty good game to play with your family",
+                            Content = "I bet your son will like to play with you",
                             NewsFeedId = 1,
-                            Timestamp = new DateTime(2020, 9, 6, 21, 25, 5, 869, DateTimeKind.Local).AddTicks(2721),
-                            Title = "Soccer"
+                            Timestamp = new DateTime(2020, 9, 8, 14, 16, 24, 585, DateTimeKind.Local).AddTicks(2179),
+                            Title = "Soccer is a pretty good game to play with your family"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Content = "I hope he's okay",
+                            NewsFeedId = 1,
+                            Timestamp = new DateTime(2020, 9, 8, 14, 16, 24, 586, DateTimeKind.Local).AddTicks(1529),
+                            Title = "Neymar falls 126 times during match and breaks the world record"
                         },
                         new
                         {
                             Id = 2,
-                            Content = "Will the coviid-19 pandemic be erased?",
+                            Content = "Things are going crazy in brazilian politics",
                             NewsFeedId = 2,
-                            Timestamp = new DateTime(2020, 9, 4, 21, 25, 5, 870, DateTimeKind.Local).AddTicks(683),
-                            Title = "Brazilian politics"
+                            Timestamp = new DateTime(2020, 9, 6, 14, 16, 24, 586, DateTimeKind.Local).AddTicks(1775),
+                            Title = "Will the covid-19 pandemic be erased?"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Content = "Authorities are unreachable",
+                            NewsFeedId = 2,
+                            Timestamp = new DateTime(2020, 9, 6, 14, 16, 24, 586, DateTimeKind.Local).AddTicks(1794),
+                            Title = "Water treatment in Brazil keeps compromised"
                         },
                         new
                         {
                             Id = 3,
-                            Content = "Once you get used to the cringe is a pretty good show",
+                            Content = "Pam and Jim are the best couple ever",
                             NewsFeedId = 3,
-                            Timestamp = new DateTime(2020, 9, 5, 21, 25, 5, 870, DateTimeKind.Local).AddTicks(738),
-                            Title = "The Office"
+                            Timestamp = new DateTime(2020, 9, 7, 14, 16, 24, 586, DateTimeKind.Local).AddTicks(1828),
+                            Title = "The Office: Once you get used to the cringe is a pretty good show"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Content = "Will it be good this time?",
+                            NewsFeedId = 3,
+                            Timestamp = new DateTime(2020, 9, 7, 14, 16, 24, 586, DateTimeKind.Local).AddTicks(1852),
+                            Title = "Game of thrones: A new ending is coming"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Content = "Some say people already ate the skirt",
+                            NewsFeedId = 4,
+                            Timestamp = new DateTime(2020, 9, 7, 14, 16, 24, 586, DateTimeKind.Local).AddTicks(1887),
+                            Title = "Lady gaga's meat dress is found on a random butchery"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Content = "Wow, nobody expected this",
+                            NewsFeedId = 4,
+                            Timestamp = new DateTime(2020, 9, 7, 14, 16, 24, 586, DateTimeKind.Local).AddTicks(1908),
+                            Title = "Radiohead launches another slow and sad song"
                         });
                 });
 
@@ -307,6 +348,11 @@ namespace news_feed.Data.Migrations
                         {
                             Id = 3,
                             Name = "TV"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Music"
                         });
                 });
 

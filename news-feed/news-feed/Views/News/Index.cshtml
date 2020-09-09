@@ -36,7 +36,11 @@
 </div>
 @section scripts {
     <script type="text/javascript">
-        var subscribedFeedIds = @Html.Raw(Json.Serialize(Model.User.SubscribedFeeds.Select(x => x.NewsFeedId).ToList()));
+        var subscribedFeedIds = [];
+        @if (Model.User != null)
+        {
+            @:subscribedFeedIds = @Html.Raw(Json.Serialize(Model.User.SubscribedFeeds.Select(x => x.NewsFeedId).ToList()));
+        };
 
         var unsubscribeButton = document.getElementsByClassName("unsubscribe-button");
         var subscribeButton = document.getElementsByClassName("subscribe-button");
@@ -90,17 +94,17 @@
         function sendSubscriptionRequest(method) {
             var data = Number(document.getElementById("feeds").value)
 
-            $.ajax({
-                url: '/api/subscription',
-                type: method,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify(data)
-            })
-                .done(function (result) {
-                    alert(result)
-                });
-        }
+        $.ajax({
+            url: '/api/subscription',
+            type: method,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify(data)
+        })
+            .done(function (result) {
+            alert(result)
+            });
+    }
 
     </script>
 }

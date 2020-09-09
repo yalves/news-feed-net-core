@@ -29,12 +29,12 @@ namespace news_feed.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ApplicationUser applicationUser = await _userManager.GetUserAsync(User);
+            var user = _userManager.Users.Include(x => x.SubscribedFeeds).FirstOrDefault(x => x.Id == _userManager.GetUserId(User));
 
             var viewModel = new NewsViewModel
             {
                 News = await _newsService.GetAll().ConfigureAwait(false),
-                User = await _userManager.GetUserAsync(User)
+                User = user
             };
 
             return View(viewModel);

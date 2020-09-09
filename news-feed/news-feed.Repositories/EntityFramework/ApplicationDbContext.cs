@@ -29,7 +29,7 @@ namespace news_feed.Repositories.EntityFramework
                 .WithMany()
                 .HasForeignKey(x => x.NewsFeedId);
 
-            modelBuilder.Entity<NewsFeed>()
+            modelBuilder.Entity<Domain.NewsFeed>()
                 .HasMany(x => x.News)
                 .WithOne(x => x.NewsFeed);
 
@@ -38,7 +38,7 @@ namespace news_feed.Repositories.EntityFramework
 
         private void AddSeedData(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 1, Name = "Sports" });
+            modelBuilder.Entity<Domain.NewsFeed>().HasData(new Domain.NewsFeed { Id = 1, Name = "Sports" });
             modelBuilder.Entity<Domain.News>().HasData(new 
             { 
                 Id = 1, 
@@ -49,7 +49,7 @@ namespace news_feed.Repositories.EntityFramework
             });
 
 
-            modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 2, Name = "Politics" });
+            modelBuilder.Entity<Domain.NewsFeed>().HasData(new Domain.NewsFeed { Id = 2, Name = "Politics" });
             modelBuilder.Entity<Domain.News>().HasData(new
             {
                 Id = 2,
@@ -59,7 +59,7 @@ namespace news_feed.Repositories.EntityFramework
                 NewsFeedId = 2
             });
 
-            modelBuilder.Entity<NewsFeed>().HasData(new NewsFeed { Id = 3, Name = "TV" });
+            modelBuilder.Entity<Domain.NewsFeed>().HasData(new Domain.NewsFeed { Id = 3, Name = "TV" });
             modelBuilder.Entity<Domain.News>().HasData(new
             {
                 Id = 3,
@@ -70,7 +70,7 @@ namespace news_feed.Repositories.EntityFramework
             });
         }
 
-        public DbSet<NewsFeed> NewsFeed { get; set; }
+        public DbSet<Domain.NewsFeed> NewsFeed { get; set; }
         public DbSet<Domain.News> News { get; set; }
         public DbSet<UserNewsFeed> UserNewsFeed { get; set; }
     }

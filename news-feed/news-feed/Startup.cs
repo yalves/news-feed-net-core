@@ -17,6 +17,7 @@ using news_feed.Repositories.EntityFramework;
 using news_feed.Services;
 using news_feed.Repositories.News;
 using news_feed.Repositories;
+using news_feed.Repositories.NewsFeed;
 
 namespace news_feed
 {
@@ -37,15 +38,17 @@ namespace news_feed
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddNewtonsoftJson();
             services.AddRazorPages();
 
             services.AddScoped<UserManager<ApplicationUser>>();
 
             services.AddScoped<INewsService, NewsService>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<INewsFeedService, NewsFeedService>();
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
+            services.AddScoped<INewsFeedRepository, NewsFeedRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

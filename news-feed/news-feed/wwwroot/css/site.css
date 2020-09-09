@@ -203,3 +203,7 @@ body {
 .select {
     width: 20%
 }
+
+.unsubscribe-button {
+    display: none;
+}

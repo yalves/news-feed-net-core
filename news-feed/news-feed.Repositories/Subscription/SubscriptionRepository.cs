@@ -1,8 +1,10 @@
-﻿using news_feed.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using news_feed.Domain;
 using news_feed.Repositories.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace news_feed.Repositories
 {
@@ -14,11 +16,11 @@ namespace news_feed.Repositories
         {
             _context = context;
         }
-        public IEnumerable<NewsFeed> GetByUserId(string userId)
+        public async Task<IEnumerable<Domain.NewsFeed>> GetByUserId(string userId)
         {
-            return _context.UserNewsFeed.Where(x => x.UserId == userId)
-                                        .Select(x => x.NewsFeed)
-                                        .ToList();
+            return await _context.UserNewsFeed.Where(x => x.UserId == userId)
+                                              .Select(x => x.NewsFeed)
+                                              .ToListAsync().ConfigureAwait(false);
         }
     }
 }

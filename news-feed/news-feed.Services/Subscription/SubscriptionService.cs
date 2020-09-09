@@ -1,22 +1,64 @@
-﻿using news_feed.Domain;
+﻿using Microsoft.AspNetCore.Identity;
+using news_feed.Domain;
 using news_feed.Repositories;
+using news_feed.Repositories.NewsFeed;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace news_feed.Services
 {
     public class SubscriptionService : ISubscriptionService
     {
         private readonly ISubscriptionRepository _subscriptionRepository;
+        private readonly INewsFeedRepository _newsFeedRepository;
+        private readonly INewsService _newsService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public SubscriptionService(ISubscriptionRepository subscriptionRepository)
+        public SubscriptionService(ISubscriptionRepository subscriptionRepository, INewsFeedRepository newsFeedRepository, INewsService newsService, UserManager<ApplicationUser> userManager)
         {
             _subscriptionRepository = subscriptionRepository;
+            _newsFeedRepository = newsFeedRepository;
+            _newsService = newsService;
+            _userManager = userManager;
         }
 
-        public IEnumerable<NewsFeed> GetUserSubscriptions(string UserId)
+        public async Task Subscribe(ApplicationUser user, int newsFeedId)
         {
-            throw new NotImplementedException();
+            var newsFeed = await _newsFeedRepository.GetById(newsFeedId).ConfigureAwait(false);
+
+            var subscription = new UserNewsFeed
+            {
+                NewsFeed = newsFeed,
+                NewsFeedId = newsFeedId,
+                User = user,
+                UserId = user.Id
+            };
+
+            if (user.SubscribedFeeds == null)
+            {
+                user.SubscribedFeeds = new List<UserNewsFeed>
+                {
+                    subscription
+                };
+            }
+            else
+            {
+                user.SubscribedFeeds.Add(subscription);
+            }
+
+            await _userManager.UpdateAsync(user).ConfigureAwait(false);
+        }
+
+        public async Task Unsubscribe(ApplicationUser user, int newsFeedId)
+        {
+            if (user.SubscribedFeeds == null)
+                return;
+
+            user.SubscribedFeeds = user.SubscribedFeeds.Where(x => x.NewsFeedId != newsFeedId).ToList();
+
+            await _userManager.UpdateAsync(user).ConfigureAwait(false);
         }
     }
 }

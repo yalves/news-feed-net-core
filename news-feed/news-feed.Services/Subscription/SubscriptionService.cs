@@ -14,7 +14,7 @@ namespace news_feed.Services
         private readonly INewsFeedRepository _newsFeedRepository;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public SubscriptionService(NewsFeedRepository newsFeedRepository, UserManager<ApplicationUser> userManager)
+        public SubscriptionService(INewsFeedRepository newsFeedRepository, UserManager<ApplicationUser> userManager)
         {
             _newsFeedRepository = newsFeedRepository;
             _userManager = userManager;

@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
+﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using news_feed.Data;
 using news_feed.Domain;
 using news_feed.Services;
 using news_feed.ViewModels;
 
 namespace news_feed.Controllers
 {
+    [Authorize]
     public class NewsController : Controller
     {        
         private readonly INewsService _newsService;

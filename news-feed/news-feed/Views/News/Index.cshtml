@@ -17,19 +17,23 @@
 <button class="button subscribe-button" onclick="subscribeToFeed()">Subscribe</button>
 <button class="button unsubscribe-button" onclick="unSubscribeToFeed()">Unsubscribe</button>
 
-@foreach (var item in Model.News)
-{
-    <div class="card feed-@item.NewsFeed.Id" id="news-@item.Id" asp-action="Details" asp-route-id="@item.Id">
-        <p>
-            @item.NewsFeed.Name - @item.Timestamp.ToString("MM/dd/yyyy")
-        </p>
-        <a asp-action="Details" asp-route-id="@item.Id">
-            <h2>
-                @item.Title
-            </h2>
-        </a>
-    </div>
-}
+<div class="row">
+    @foreach (var item in Model.News)
+    {
+        <div class="col-sm-4 card-container feed-@item.NewsFeed.Id">
+            <div class="card" id="news-@item.Id" asp-action="Details" asp-route-id="@item.Id">
+                <p>
+                    @item.NewsFeed.Name - @item.Timestamp.ToString("MM/dd/yyyy")
+                </p>
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <h2>
+                        @item.Title
+                    </h2>
+                </a>
+            </div>
+        </div>
+    }
+</div>
 @section scripts {
     <script type="text/javascript">
         var subscribedFeedIds = @Html.Raw(Json.Serialize(Model.User.SubscribedFeeds.Select(x => x.NewsFeedId).ToList()));
@@ -39,7 +43,7 @@
 
         function toggleFeedSelection() {
             var select = document.getElementById("feeds")
-            var allCards = document.getElementsByClassName("card");
+            var allCards = document.getElementsByClassName("card-container");
             var selectedCards = document.getElementsByClassName("feed-" + select.value);
 
             if (select.value === "0") {

@@ -4,7 +4,7 @@
     ViewData["Title"] = "My news";
 }
 
-@if(Model.News.Count() == 0)
+@if (Model.News.Count() == 0)
 {
     <h2 style="margin-top:20px">You haven't subscribed to any news feed, <a asp-controller="News" asp-action="Index" style="text-decoration: underline">click here</a> to view all the news</h2>
 }
@@ -13,17 +13,21 @@ else
     <h3>
         You are seeing news from the feeds: @string.Join(", ", Model.News.Select(x => x.NewsFeed).Distinct().Select(x => x.Name))
     </h3>
-    @foreach (var item in Model.News)
-    {
-        <div class="card feed-@item.NewsFeed.Id" id="news-@item.Id" asp-action="Details" asp-route-id="@item.Id">
-            <p>
-                @item.NewsFeed.Name - @item.Timestamp.ToString("MM/dd/yyyy")
-            </p>
-            <a asp-action="Details" asp-route-id="@item.Id">
-                <h2>
-                    @item.Title
-                </h2>
-            </a>
-        </div>
-    }
+    <div class="row">
+        @foreach (var item in Model.News)
+        {
+            <div class="col-sm-4 card-container feed-@item.NewsFeed.Id">
+                <div class="card feed-@item.NewsFeed.Id" id="news-@item.Id" asp-action="Details" asp-route-id="@item.Id">
+                    <p>
+                        @item.NewsFeed.Name - @item.Timestamp.ToString("MM/dd/yyyy")
+                    </p>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <h2>
+                            @item.Title
+                        </h2>
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
 }

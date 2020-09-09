@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>aspnet-news_feed-E4A1F517-177A-44E7-9E44-3BE8FC569B1A</UserSecretsId>
     <RootNamespace>news_feed</RootNamespace>
+	<AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <ItemGroup>

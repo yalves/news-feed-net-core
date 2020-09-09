@@ -11,16 +11,12 @@ namespace news_feed.Services
 {
     public class SubscriptionService : ISubscriptionService
     {
-        private readonly ISubscriptionRepository _subscriptionRepository;
         private readonly INewsFeedRepository _newsFeedRepository;
-        private readonly INewsService _newsService;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public SubscriptionService(ISubscriptionRepository subscriptionRepository, INewsFeedRepository newsFeedRepository, INewsService newsService, UserManager<ApplicationUser> userManager)
+        public SubscriptionService(NewsFeedRepository newsFeedRepository, UserManager<ApplicationUser> userManager)
         {
-            _subscriptionRepository = subscriptionRepository;
             _newsFeedRepository = newsFeedRepository;
-            _newsService = newsService;
             _userManager = userManager;
         }
 

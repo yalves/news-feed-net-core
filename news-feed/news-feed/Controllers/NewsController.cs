@@ -40,6 +40,23 @@ namespace news_feed.Controllers
             return View(viewModel);
         }
 
+        [HttpGet("MyNews")]
+        public async Task<IActionResult> MyNews()
+        {
+            var user = _userManager.Users.Include(x => x.SubscribedFeeds).FirstOrDefault(x => x.Id == _userManager.GetUserId(User));
+
+            var userFeedIds = user.SubscribedFeeds.Select(x => x.NewsFeedId).ToList();
+            var userNews = await _newsService.GetByNewsFeedIds(userFeedIds).ConfigureAwait(false);
+
+            var viewModel = new NewsViewModel
+            {
+                News = userNews,
+                User = user
+            };
+
+            return View("MyNews", viewModel);
+        }
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

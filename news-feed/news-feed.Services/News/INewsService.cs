@@ -6,7 +6,8 @@ namespace news_feed.Services
 {
     public interface INewsService
     {
-        public Task<IEnumerable<News>> GetAll();
-        public Task<News> GetById(int? id);
+        Task<IEnumerable<News>> GetAll();
+        Task<News> GetById(int? id);
+        Task<IEnumerable<News>> GetByNewsFeedIds(IEnumerable<int> userFeedIds);
     }
 }

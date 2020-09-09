@@ -2,6 +2,7 @@
 using news_feed.Repositories.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,6 +25,11 @@ namespace news_feed.Repositories.News
         public async Task<Domain.News> GetById(int id)
         {
             return await _context.News.FirstOrDefaultAsync(m => m.Id == id);
+        }
+
+        public async Task<IEnumerable<Domain.News>> GetByNewsFeedIds(IEnumerable<int> feedIds)
+        {
+            return await _context.News.Where(x => feedIds.Contains(x.NewsFeed.Id)).Include(x => x.NewsFeed).ToListAsync().ConfigureAwait(false);
         }
     }
 }

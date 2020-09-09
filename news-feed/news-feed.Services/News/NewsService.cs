@@ -1,5 +1,4 @@
 ﻿using news_feed.Domain;
-using news_feed.Repositories;
 using news_feed.Repositories.News;
 using System;
 using System.Collections.Generic;
@@ -28,6 +27,11 @@ namespace news_feed.Services
             }
 
             return await _newsRepository.GetById((int)id);
+        }
+
+        public async Task<IEnumerable<News>> GetByNewsFeedIds(IEnumerable<int> userFeedIds)
+        {
+            return await _newsRepository.GetByNewsFeedIds(userFeedIds).ConfigureAwait(false);
         }
     }
 }

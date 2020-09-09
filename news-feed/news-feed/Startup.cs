@@ -47,7 +47,6 @@ namespace news_feed
             services.AddScoped<ISubscriptionService, SubscriptionService>();
             services.AddScoped<INewsFeedService, NewsFeedService>();
             services.AddScoped<INewsRepository, NewsRepository>();
-            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
             services.AddScoped<INewsFeedRepository, NewsFeedRepository>();
         }
 

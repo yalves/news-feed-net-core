@@ -1,10 +1,10 @@
 ﻿@model NewsViewModel
 
 @{
-    ViewData["Title"] = "All news";
+    ViewData["Title"] = "My news";
 }
 
-<label for="feeds">Choose a News feed:</label>
+@*<label for="feeds">Choose a News feed:</label>
 
 <select name="feeds" id="feeds" onchange="toggleFeedSelection()" class="custom-select select">
     <option value=0>All feeds</option>
@@ -15,7 +15,7 @@
 </select>
 
 <button class="button subscribe-button" onclick="subscribeToFeed()">Subscribe</button>
-<button class="button unsubscribe-button" onclick="unSubscribeToFeed()">Unsubscribe</button>
+<button class="button unsubscribe-button" onclick="unSubscribeToFeed()">Unsubscribe</button>*@
 
 @foreach (var item in Model.News)
 {
@@ -30,7 +30,7 @@
         </a>
     </div>
 }
-@section scripts {
+@*@section scripts {
     <script type="text/javascript">
         function toggleFeedSelection() {
             var select = document.getElementById("feeds")
@@ -84,4 +84,4 @@
         }
 
     </script>
-}
+}*@
